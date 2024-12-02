@@ -12,12 +12,6 @@ export default createGlobalStyle`
       -moz-osx-font-smoothing: grayscale;
   }
 
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
-
-
   body > #root > div {
     height: 100svh;
     width: 100svw;

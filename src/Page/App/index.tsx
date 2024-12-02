@@ -2,16 +2,21 @@ import {
   ActionContainer,
   ButtonWrapper,
   CenteredLabel,
+  ClassName,
+  Credits,
   Image,
+  LongRoll,
   Roll,
   Wrapper,
 } from './styles';
 import loadout from '../../loadout';
+import savedLoadout from '../../savedLoadout';
 import { useCallback, useEffect, useState } from 'react';
 import TileBar from '../../Component/TileBar';
 import Dropdown from '../../Component/Dropdown';
 
 export interface Loadout {
+  name?: string;
   class: string;
   weapon: string;
   ability: string;
@@ -20,8 +25,13 @@ export interface Loadout {
 
 const App = () => {
   const [pickedLoadout, pickLoadout] = useState<Loadout | undefined>();
+  const [pinnedLoadout, setPinnedLoadout] = useState<any>();
   const [displayReserve, toggleReserve] = useState(false);
   const random = (max: number) => Math.floor(Math.random() * max);
+
+  const rollSaved = useCallback(() => {
+    pickLoadout(savedLoadout[random(savedLoadout.length)]);
+  }, []);
 
   const roll = useCallback((className = Object.keys(loadout)[random(3)]) => {
     const { abilities, gadgets, weapons } =
@@ -61,6 +71,7 @@ const App = () => {
             {pickedLoadout?.class}
           </Roll>
         </ButtonWrapper>
+        <LongRoll onClick={rollSaved}>Loadout</LongRoll>
         <CenteredLabel>
           <input
             type="checkbox"
@@ -75,6 +86,7 @@ const App = () => {
         onSelect={(e: string) => roll(e)}
         selected={pickedLoadout?.class}
       />
+      {pickedLoadout?.name && <ClassName>{pickedLoadout.name}</ClassName>}
       {pickedLoadout && (
         <Image
           src={require(`../../Static/class/${pickedLoadout.class}.png`)}
@@ -82,6 +94,7 @@ const App = () => {
         />
       )}
       <TileBar loadout={pickedLoadout} displayReserve={displayReserve} />
+      <Credits>Made with ❤️ By Axoloot</Credits>
     </Wrapper>
   );
 };

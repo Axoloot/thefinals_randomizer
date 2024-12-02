@@ -34,6 +34,10 @@ export const Roll = styled.button`
   }
 `;
 
+export const LongRoll = styled(Roll)`
+  width: 15em;
+`;
+
 export const ActionContainer = styled.div`
   display: flex;
   position: absolute;
@@ -50,4 +54,24 @@ export const CenteredLabel = styled.label`
 export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
+`;
+
+export const ClassName = styled.div`
+  position: relative;
+  width: 15em;
+  margin: 0.5em;
+  margin-left: 16em;
+  font-weight: bold;
+  font-style: italic;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Saira Extra Condensed', sans-serif;
+`;
+
+export const Credits = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  font-size: 0.9em;
+  font-family: 'Saira Extra Condensed', sans-serif;
 `;

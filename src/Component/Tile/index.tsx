@@ -3,7 +3,6 @@ import { Image, Label, TileWrapper } from './styles';
 
 interface TileProps {
   content?: string;
-  title?: string;
 }
 
 const Tile = (props: TileProps) => {
@@ -12,7 +11,7 @@ const Tile = (props: TileProps) => {
   const [isOverflowing, setIsOverflowing] = useState(false);
 
   const getImage = useCallback(() => {
-    if (!content) return '../../Static/gadgets/93r.png';
+    if (!content) return '';
     const formatted = content
       .replaceAll(' ', '_')
       .replaceAll('.', '')

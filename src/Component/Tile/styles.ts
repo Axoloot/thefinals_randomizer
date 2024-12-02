@@ -35,11 +35,19 @@ export const Label = styled.div`
   }
 
   @keyframes my-animation {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    30%,
+    70% {
+      opacity: 1;
+    }
     from {
-      transform: translateX(100%);
+      transform: translateX(5%);
     }
     to {
-      transform: translateX(-100%);
+      transform: translateX(-15%);
     }
   }
 `;
