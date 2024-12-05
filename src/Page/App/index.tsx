@@ -25,7 +25,6 @@ export interface Loadout {
 
 const App = () => {
   const [pickedLoadout, pickLoadout] = useState<Loadout | undefined>();
-  const [pinnedLoadout, setPinnedLoadout] = useState<any>();
   const [displayReserve, toggleReserve] = useState(false);
   const random = (max: number) => Math.floor(Math.random() * max);
 
