@@ -26,6 +26,7 @@ export interface Loadout {
 const App = () => {
   const [pickedLoadout, pickLoadout] = useState<Loadout | undefined>();
   const [displayReserve, toggleReserve] = useState(false);
+  const [image, setImage] = useState("");
   const random = (max: number) => Math.floor(Math.random() * max);
 
   const rollSaved = useCallback(() => {
@@ -88,7 +89,7 @@ const App = () => {
       {pickedLoadout?.name && <ClassName>{pickedLoadout.name}</ClassName>}
       {pickedLoadout && (
         <Image
-          src={require(`../../Static/class/${pickedLoadout.class}.png`)}
+          src={`class/${pickedLoadout.class}.png`}
           alt={pickedLoadout?.class}
         />
       )}

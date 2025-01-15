@@ -16,7 +16,7 @@ const Tile = (props: TileProps) => {
       .replaceAll(' ', '_')
       .replaceAll('.', '')
       .toLocaleLowerCase();
-    return require(`../../Static/gadgets/${formatted}.png`);
+    return `gadgets/${formatted}.png`;
   }, [content]);
 
   useEffect(() => {

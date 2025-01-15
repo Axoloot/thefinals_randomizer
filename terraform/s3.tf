@@ -22,6 +22,30 @@ resource "aws_s3_bucket_policy" "the_finals_s3" {
             "AWS:SourceArn" = aws_cloudfront_distribution.s3_distribution.arn
           }
         }
+      },
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = "cloudfront.amazonaws.com"
+        }
+        Action   = "s3:GetObject"
+        Resource = "${aws_s3_bucket.the_finals.arn}/class"
+      },
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = "cloudfront.amazonaws.com"
+        }
+        Action   = "s3:GetObject"
+        Resource = "${aws_s3_bucket.the_finals.arn}/gadgets"
+      },
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = "cloudfront.amazonaws.com"
+        }
+        Action   = "s3:GetObject"
+        Resource = "${aws_s3_bucket.the_finals.arn}/*.js"
       }
     ]
   })
