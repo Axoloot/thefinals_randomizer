@@ -19,7 +19,7 @@ provider "aws" {
 }
 
 module "cloudfront" {
-  source = "git@github.com:Axoloot/terrafrom_cloudfront.git"
+  source = "/home/axo/CurrentProjects/tfCloudfront"
 
   domain       = "the-finals-roulette.site"
   bucket_name  = "the-finals-randomizer"
