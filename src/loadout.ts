@@ -26,7 +26,6 @@ const loadout = {
       'Pyro Grenade',
       'Smoke Grenade',
       'Sonar Grenade',
-      'Stun Gun',
       'Thermal Bore',
       'Thermal Vision',
       'Tracking Dart',
