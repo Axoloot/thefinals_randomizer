@@ -16,4 +16,5 @@ export default createGlobalStyle`
     height: 100svh;
     width: 100svw;
   }
+
 `;
