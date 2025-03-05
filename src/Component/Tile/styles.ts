@@ -16,7 +16,7 @@ export const Image = styled.img`
   width: 5em;
 `;
 
-export const Label = styled.div`
+export const Label = styled.h2`
   white-space: nowrap;
   text-align: center;
   color: white;

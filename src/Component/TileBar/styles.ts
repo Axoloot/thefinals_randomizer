@@ -17,7 +17,7 @@ export const TileWrapper = styled.div`
   margin: 0 1em;
 `;
 
-export const Title = styled.div`
+export const Title = styled.h2`
   text-align: center;
   color: white;
   font-weight: bold;

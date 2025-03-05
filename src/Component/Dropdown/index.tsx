@@ -13,7 +13,7 @@ const SelectWrapper = styled.div`
   font-family: 'Saira Extra Condensed', sans-serif;
 `;
 
-const StyledSelect = styled.div`
+const StyledSelect = styled.h1`
   padding: 8px 15px;
   cursor: pointer;
   position: relative;
