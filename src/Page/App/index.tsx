@@ -24,9 +24,13 @@ export interface Loadout {
 }
 
 const App = () => {
-  const [pickedLoadout, pickLoadout] = useState<Loadout | undefined>();
+  const [pickedLoadout, pickLoadout] = useState<Loadout>({
+    class: 'light',
+    weapon: 'lh1',
+    ability: 'cloaking device',
+    gadgets: ['goo grenade', 'frag grenade', 'gravity vortex']
+  });
   const [displayReserve, toggleReserve] = useState(false);
-  const [image, setImage] = useState('');
   const random = (max: number) => Math.floor(Math.random() * max);
 
   const rollSaved = useCallback(() => {
