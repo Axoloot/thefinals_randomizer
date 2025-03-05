@@ -9,6 +9,10 @@ export const TileWrapper = styled.div`
   margin: 0 1em;
   overflow: hidden;
   max-width: 5em;
+
+  @media (max-width: 600px) {
+    margin: 0.2em 0;
+  }
 `;
 
 export const Image = styled.img`

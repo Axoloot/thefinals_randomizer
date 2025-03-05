@@ -5,7 +5,6 @@ import {
   ClassName,
   Credits,
   Image,
-  LongRoll,
   Roll,
   Wrapper,
 } from './styles';
@@ -69,10 +68,10 @@ const App = () => {
   return (
     <Wrapper>
       <ActionContainer>
-        <LongRoll onClick={() => roll()}>Roll</LongRoll>
-        <LongRoll onClick={() => roll(pickedLoadout?.class)}>
+        <Roll onClick={() => roll()}>Roll</Roll>
+        <Roll onClick={() => roll(pickedLoadout?.class)}>
           Roll {pickedLoadout?.class}
-        </LongRoll>
+        </Roll>
         <CenteredLabel>
           <input
             type="checkbox"

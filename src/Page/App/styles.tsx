@@ -12,6 +12,11 @@ export const Image = styled.img`
   left: 50%;
   bottom: 0;
   transform: translate(-50%, 0);
+
+  @media (max-width: 600px) {
+    height: 75%;
+    z-index: -100;
+  }
 `;
 
 export const Roll = styled.button`
@@ -22,6 +27,7 @@ export const Roll = styled.button`
   border: none;
   color: white;
   font-weight: bold;
+  width: 15em;
 
   ${generateNeumorphicCss('#6D7685', 'dome')}
 
@@ -32,10 +38,11 @@ export const Roll = styled.button`
   &:hover {
     color: black;
   }
-`;
 
-export const LongRoll = styled(Roll)`
-  width: 15em;
+  @media (max-width: 600px) {
+    width: 5em;
+  }
+
 `;
 
 export const ActionContainer = styled.div`
@@ -44,11 +51,19 @@ export const ActionContainer = styled.div`
   bottom: 0;
   left: 0;
   flex-direction: column;
+
+  @media (max-width: 600px) {
+    flex-direction: row;
+  }
 `;
 
 export const CenteredLabel = styled.label`
   align-content: center;
   text-align: center;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const ButtonWrapper = styled.div`

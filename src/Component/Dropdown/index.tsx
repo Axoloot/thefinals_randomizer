@@ -11,6 +11,10 @@ const SelectWrapper = styled.div`
   font-style: italic;
   text-transform: uppercase;
   font-family: 'Saira Extra Condensed', sans-serif;
+
+  @media (max-width: 600px) {
+    margin-left: 0em;
+  }
 `;
 
 const StyledSelect = styled.h1`
