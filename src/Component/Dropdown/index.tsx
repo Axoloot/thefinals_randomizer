@@ -13,7 +13,7 @@ const SelectWrapper = styled.div`
   font-family: 'Saira Extra Condensed', sans-serif;
 
   @media (max-width: 600px) {
-    margin-left: 0em;
+    width: 9em;
   }
 `;
 
