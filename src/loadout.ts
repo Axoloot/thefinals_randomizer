@@ -13,6 +13,7 @@ const loadout = {
       'Throwing Knives',
       'V9S',
       'XP-54',
+      'ARN-220'
     ],
     gadgets: [
       'Breach Charge',
@@ -45,6 +46,7 @@ const loadout = {
       'R.357',
       'Riot Shield',
       'Cerberus 12GA',
+      'CB-01 Repeater',
     ],
     gadgets: [
       'APS Turret',
@@ -77,6 +79,7 @@ const loadout = {
       'Sledgehammer',
       'Spear',
       'shAk-50',
+      'M134 Minigun',
     ],
     gadgets: [
       'Anti-Gravity Cube',
