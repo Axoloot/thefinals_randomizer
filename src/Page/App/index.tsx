@@ -7,6 +7,7 @@ import {
   Image,
   Roll,
   Wrapper,
+  Previous
 } from './styles';
 import loadout from '../../loadout';
 import savedLoadout from '../../savedLoadout';
@@ -22,13 +23,18 @@ export interface Loadout {
   gadgets: string[];
 }
 
+const baseLoadout = {
+  class: 'light',
+  weapon: 'lh1',
+  ability: 'cloaking device',
+  gadgets: ['goo grenade', 'frag grenade', 'gravity vortex']
+}
+
 const App = () => {
-  const [pickedLoadout, pickLoadout] = useState<Loadout>({
-    class: 'light',
-    weapon: 'lh1',
-    ability: 'cloaking device',
-    gadgets: ['goo grenade', 'frag grenade', 'gravity vortex']
-  });
+  const [oldLoadout, setOldLoadout] = useState<Loadout>(baseLoadout);
+  const [pickedLoadout, pickLoadout] = useState<Loadout>(baseLoadout);
+  const [nbPick, setNbPick] = useState(0);
+
   const [displayReserve, toggleReserve] = useState(false);
   const random = (max: number) => Math.floor(Math.random() * max);
 
@@ -59,17 +65,32 @@ const App = () => {
       ability: abilities[random(abilities.length)],
       gadgets: uniqueGadgets,
     });
+    setNbPick((old) => old + 1)
   }, []);
+
+  const rollAndSave = useCallback((className = Object.keys(loadout)[random(3)]) => {
+    setOldLoadout(pickedLoadout)
+    roll(className);
+  }, [pickedLoadout])
 
   useEffect(() => {
     roll();
+    setNbPick(0);
   }, [roll]);
+
+  const setPreviousLoadout = useCallback(() => {
+    pickLoadout(oldLoadout)
+    setNbPick(0);
+  }, [oldLoadout]);
 
   return (
     <Wrapper>
       <ActionContainer>
-        <Roll onClick={() => roll()}>Roll</Roll>
-        <Roll onClick={() => roll(pickedLoadout?.class)}>
+        <div>
+          <Roll onClick={() => rollAndSave()}>Roll</Roll>
+          {nbPick > 0 && <Previous onClick={setPreviousLoadout}>&#8617;</Previous>}
+        </div>
+        <Roll onClick={() => rollAndSave(pickedLoadout?.class)}>
           Roll {pickedLoadout?.class}
         </Roll>
         <CenteredLabel>

@@ -45,6 +45,26 @@ export const Roll = styled.button`
 
 `;
 
+export const Previous = styled.button`
+  width: 3em;
+  height: 3em;
+  margin: 1em;
+  text-transform: uppercase;
+  border: none;
+  color: white;
+  font-weight: bold;
+
+  ${generateNeumorphicCss('#6D7685', 'dome')}
+
+  &:active {
+    ${generateNeumorphicCss('#6D7685', 'inset')}
+  }
+
+  &:hover {
+    color: black;
+  }
+`;
+
 export const ActionContainer = styled.div`
   display: flex;
   position: absolute;
