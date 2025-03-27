@@ -13,7 +13,7 @@ const loadout = {
       'Throwing Knives',
       'V9S',
       'XP-54',
-      'ARN-220'
+      'ARN-220',
     ],
     gadgets: [
       'Breach Charge',

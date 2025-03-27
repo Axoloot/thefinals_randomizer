@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ $multi: boolean }>`
   display: flex;
   flex-direction: row;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -15%);
+  ${props =>
+    props.$multi
+      ? ''
+      : `
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -15%);
+    `}
 
   @media (max-width: 600px) {
     flex-direction: column;
@@ -14,10 +19,10 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const TileWrapper = styled.div`
+export const TileWrapper = styled.div<{ $displayBorder: boolean }>`
   position: relative;
   display: flex;
-  border-top: 2px solid white;
+  ${props => props.$displayBorder && `border-top: 2px solid white;`}
   padding-top: 1em;
   margin: 0 1em;
 
@@ -25,10 +30,6 @@ export const TileWrapper = styled.div`
     flex-direction: column;
     scale: 75%;
     padding-top: 0;
-  }
-
-  &:nth-child(3) > div {
-    top: -9%;
   }
 `;
 
@@ -41,4 +42,12 @@ export const Title = styled.div`
   left: 50%;
   transform: translate(-50%, 0);
   font-family: 'Saira Extra Condensed', sans-serif;
+`;
+
+export const Center = styled.div`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

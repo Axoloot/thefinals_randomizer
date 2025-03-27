@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { generateNeumorphicCss } from '../../Component/misc';
+import { NavLink } from 'react-router';
 
 export const Wrapper = styled.div`
   height: 100svh;
@@ -28,6 +29,7 @@ export const Roll = styled.button`
   color: white;
   font-weight: bold;
   width: 15em;
+  cursor: auto;
 
   ${generateNeumorphicCss('#6D7685', 'dome')}
 
@@ -37,12 +39,27 @@ export const Roll = styled.button`
 
   &:hover {
     color: black;
+    cursor: pointer;
   }
 
   @media (max-width: 600px) {
     width: 5em;
   }
+`;
 
+export const Link = styled(NavLink)`
+  text-decoration: none;
+  color: white;
+  min-height: 100%;
+  cursor: auto;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+
+  &:hover {
+    color: black;
+  }
 `;
 
 export const Previous = styled.button`
@@ -53,6 +70,7 @@ export const Previous = styled.button`
   border: none;
   color: white;
   font-weight: bold;
+  cursor: auto;
 
   ${generateNeumorphicCss('#6D7685', 'dome')}
 
@@ -62,6 +80,7 @@ export const Previous = styled.button`
 
   &:hover {
     color: black;
+    cursor: pointer;
   }
 `;
 
@@ -109,4 +128,14 @@ export const Credits = styled.div`
   right: 10px;
   font-size: 0.9em;
   font-family: 'Saira Extra Condensed', sans-serif;
+`;
+
+export const RollInput = styled.input`
+  margin: 1em;
+  height: 2em;
+  border: none;
+  outline: none;
+  ${generateNeumorphicCss('#6D7685', 'dome')}
+  text-align: center;
+  color: white;
 `;

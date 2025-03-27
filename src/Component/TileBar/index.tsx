@@ -1,39 +1,36 @@
-import { Loadout } from '../../Page/App';
+import { Loadout } from '../../common';
 import Tile from '../Tile';
 import { Wrapper, TileWrapper, Title } from './styles';
 
 interface TileBarProps {
   loadout?: Loadout;
-  displayReserve?: boolean;
+  multi?: boolean;
+  displayTitle?: boolean;
 }
 
-const TileBar = (props: TileBarProps) => {
-  const { loadout, displayReserve = false } = props;
+const TileBar = ({
+  loadout,
+  multi = false,
+  displayTitle = true,
+}: TileBarProps) => {
+  if (!loadout) return null;
 
   return (
-    <Wrapper>
-      <TileWrapper>
-        <Title>SPECIALIZATION</Title>
-        <Tile content={loadout?.ability} />
+    <Wrapper $multi={multi}>
+      <TileWrapper $displayBorder={displayTitle}>
+        {displayTitle && <Title>SPECIALIZATION</Title>}
+        <Tile content={loadout.ability} />
       </TileWrapper>
-      <TileWrapper>
-        <Title>WEAPON</Title>
-        <Tile content={loadout?.weapon} />
+      <TileWrapper $displayBorder={displayTitle}>
+        {displayTitle && <Title>WEAPON</Title>}
+        <Tile content={loadout.weapon} />
       </TileWrapper>
-      <TileWrapper>
-        <Title>GADGETS</Title>
-        <Tile content={loadout?.gadgets[0]} />
-        <Tile content={loadout?.gadgets[1]} />
-        <Tile content={loadout?.gadgets[2]} />
+      <TileWrapper $displayBorder={displayTitle}>
+        {displayTitle && <Title>GADGETS</Title>}
+        {loadout.gadgets.slice(0, 3).map((gadget, i) => (
+          <Tile key={i} content={gadget} />
+        ))}
       </TileWrapper>
-      {displayReserve && (
-        <TileWrapper>
-          <Title>RESERVE</Title>
-          <Tile content={loadout?.gadgets[3]} />
-          <Tile content={loadout?.gadgets[4]} />
-          <Tile content={loadout?.gadgets[5]} />
-        </TileWrapper>
-      )}
     </Wrapper>
   );
 };

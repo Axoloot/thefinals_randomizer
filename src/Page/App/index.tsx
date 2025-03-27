@@ -1,61 +1,27 @@
 import {
   ActionContainer,
-  ButtonWrapper,
-  CenteredLabel,
   ClassName,
   Credits,
   Image,
   Roll,
   Wrapper,
-  Previous
+  Previous,
+  Link,
 } from './styles';
 import loadout from '../../loadout';
-import savedLoadout from '../../savedLoadout';
 import { useCallback, useEffect, useState } from 'react';
 import TileBar from '../../Component/TileBar';
 import Dropdown from '../../Component/Dropdown';
-
-export interface Loadout {
-  name?: string;
-  class: string;
-  weapon: string;
-  ability: string;
-  gadgets: string[];
-}
-
-const baseLoadout = {
-  class: 'light',
-  weapon: 'lh1',
-  ability: 'cloaking device',
-  gadgets: ['goo grenade', 'frag grenade', 'gravity vortex']
-}
+import { baseLoadout, getUniqueGadgets, Loadout, random } from '../../common';
 
 const App = () => {
   const [oldLoadout, setOldLoadout] = useState<Loadout>(baseLoadout);
   const [pickedLoadout, pickLoadout] = useState<Loadout>(baseLoadout);
   const [nbPick, setNbPick] = useState(0);
 
-  const [displayReserve, toggleReserve] = useState(false);
-  const random = (max: number) => Math.floor(Math.random() * max);
-
-  const rollSaved = useCallback(() => {
-    pickLoadout(savedLoadout[random(savedLoadout.length)]);
-  }, []);
-
   const roll = useCallback((className = Object.keys(loadout)[random(3)]) => {
     const { abilities, gadgets, weapons } =
       loadout[className as keyof typeof loadout];
-
-    const getUniqueGadgets = (gadgetsList: string[]) => {
-      const selectedGadgets: any[] = [];
-
-      while (selectedGadgets.length < 6) {
-        const pickedGadget = gadgetsList[random(gadgetsList.length)];
-        if (!selectedGadgets.includes(pickedGadget))
-          selectedGadgets.push(pickedGadget);
-      }
-      return selectedGadgets;
-    };
 
     const uniqueGadgets = getUniqueGadgets(gadgets);
 
@@ -65,13 +31,16 @@ const App = () => {
       ability: abilities[random(abilities.length)],
       gadgets: uniqueGadgets,
     });
-    setNbPick((old) => old + 1)
+    setNbPick(old => old + 1);
   }, []);
 
-  const rollAndSave = useCallback((className = Object.keys(loadout)[random(3)]) => {
-    setOldLoadout(pickedLoadout)
-    roll(className);
-  }, [pickedLoadout])
+  const rollAndSave = useCallback(
+    (className = Object.keys(loadout)[random(3)]) => {
+      setOldLoadout(pickedLoadout);
+      roll(className);
+    },
+    [pickedLoadout]
+  );
 
   useEffect(() => {
     roll();
@@ -79,7 +48,7 @@ const App = () => {
   }, [roll]);
 
   const setPreviousLoadout = useCallback(() => {
-    pickLoadout(oldLoadout)
+    pickLoadout(oldLoadout);
     setNbPick(0);
   }, [oldLoadout]);
 
@@ -88,19 +57,16 @@ const App = () => {
       <ActionContainer>
         <div>
           <Roll onClick={() => rollAndSave()}>Roll</Roll>
-          {nbPick > 0 && <Previous onClick={setPreviousLoadout}>&#8617;</Previous>}
+          {nbPick > 0 && (
+            <Previous onClick={setPreviousLoadout}>&#8617;</Previous>
+          )}
         </div>
         <Roll onClick={() => rollAndSave(pickedLoadout?.class)}>
           Roll {pickedLoadout?.class}
         </Roll>
-        <CenteredLabel>
-          <input
-            type="checkbox"
-            onChange={e => toggleReserve(a => !a)}
-            checked={displayReserve}
-          />
-          Show reserve
-        </CenteredLabel>
+        <Link to="/multi" end>
+          <Roll>Multi Roll</Roll>
+        </Link>
       </ActionContainer>
       <Dropdown
         options={Object.keys(loadout)}
@@ -114,7 +80,7 @@ const App = () => {
           alt={pickedLoadout?.class}
         />
       )}
-      <TileBar loadout={pickedLoadout} displayReserve={displayReserve} />
+      <TileBar loadout={pickedLoadout} />
       <Credits>Made with ❤️ By Axoloot</Credits>
     </Wrapper>
   );
