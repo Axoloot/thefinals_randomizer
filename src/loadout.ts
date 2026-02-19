@@ -28,7 +28,6 @@ const loadout = {
       'Smoke Grenade',
       'Sonar Grenade',
       'Thermal Bore',
-      'Thermal Vision',
       'Tracking Dart',
       'Vanishing Bomb',
     ],
@@ -47,6 +46,7 @@ const loadout = {
       'Riot Shield',
       'Cerberus 12GA',
       'CB-01 Repeater',
+      'P90'
     ],
     gadgets: [
       'APS Turret',
@@ -69,6 +69,7 @@ const loadout = {
   },
   heavy: {
     weapons: [
+      'BFR Titan',
       '.50 Akimbo',
       'Flamethrower',
       'KS-23',
